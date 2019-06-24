@@ -1,5 +1,5 @@
-﻿#include"Texture.h"
-#include"Device.h"
+﻿#include"../Device/Device.h"
+#include"Texture.h"
 
 
 // 変換コンストラクタ

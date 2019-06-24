@@ -1,9 +1,9 @@
 ﻿#include<d3dx9.h>
-#include"Device.h"
-#include"Window.h"
-#include"Keyboard.h"
-#include"Texture.h"
-#include"Draw.h"
+#include"Library/Device/Device.h"
+#include"Library/Window/Window.h"
+#include"Library/Input/Keyboard.h"
+#include"Library/Texture/Texture.h"
+#include"Library/Draw/Draw.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {

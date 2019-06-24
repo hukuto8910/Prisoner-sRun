@@ -15,19 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Device.h">
+    <ClInclude Include="Library\Input\Keyboard.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Window.h">
+    <ClInclude Include="Library\Window\Window.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Texture.h">
+    <ClInclude Include="Library\Device\Device.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Keyboard.h">
+    <ClInclude Include="Library\Draw\Draw.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Draw.h">
+    <ClInclude Include="Library\Texture\Texture.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,19 +35,19 @@
     <ClCompile Include="Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Device.cpp">
+    <ClCompile Include="Library\Input\Keyboard.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Window.cpp">
+    <ClCompile Include="Library\Window\Window.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Keyboard.cpp">
+    <ClCompile Include="Library\Device\Device.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Draw.cpp">
+    <ClCompile Include="Library\Draw\Draw.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Texture.cpp">
+    <ClCompile Include="Library\Texture\Texture.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
