@@ -122,6 +122,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Map\Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Library\Device\Device.h">
       <SubType>
       </SubType>
@@ -164,7 +168,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Main\Main.cpp">
       <SubType>
       </SubType>
     </ClCompile>
