@@ -122,7 +122,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\LoadResource.h">
+    <ClInclude Include="Scene\TitleScene\TitleScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LoadResource\LoadResource.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -152,6 +156,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\TitleScene\TitleScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Library\Device\Device.cpp">
       <SubType>
       </SubType>

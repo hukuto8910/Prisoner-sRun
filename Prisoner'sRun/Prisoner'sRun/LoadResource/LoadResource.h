@@ -3,10 +3,16 @@
 
 #include<unordered_map>
 #include<string>
-#include"Library/Texture/Texture.h"
+#include"../Library/Texture/Texture.h"
 
 
+// 画像のリスト
 enum TextureList {
+
+	//  タイトル画像　//
+	TITLE_TEX,
+
+	//  マップチップ　//
 	MAP_FLOOR1,
 	MAP_FLOOR2,
 	MAP_FLOOR3,
@@ -24,6 +30,10 @@ namespace Resource {
 	std::unordered_map<TextureList, Texture>m_texture_list[TextureList::TEXTURE_MAX];
 
 	void Load() {
+		// タイトル画面の画像登録
+		m_texture_list->emplace(TextureList::TITLE_TEX, "Resource/Texture/Title/title.png");
+
+		// マップの画像登録
 		//m_texture_list[TextureList::MAP_FLOOR1] = "Resource/Texture/Map/floor1.png";
 		//m_texture_list[TextureList::MAP_FLOOR2] = "Resource/Texture/Map/floor2.png";
 		//m_texture_list[TextureList::MAP_FLOOR3] = "Resource/Texture/Map/floor3.png";
