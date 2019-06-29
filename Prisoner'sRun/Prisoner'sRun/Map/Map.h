@@ -5,6 +5,7 @@
 #include<unordered_map>
 #include"../Library/Texture/Texture.h"
 #include"../Library/Draw/Draw.h"
+#include"../LoadResource.h"
 
 
 #define MAP_CHIP_SIZE 32
@@ -59,13 +60,13 @@ public:
 				// チップ番号によって描画画像を変える
 				switch (mapChip[i][j].id) {
 				case FLOOR1:
-					test = m_texture_list[FLOOR1 - 1];
+					test = Resource::m_texture_list->at(TextureList::MAP_FLOOR1);
 					break;
 				case FLOOR2:
-					test = m_texture_list[FLOOR2 - 1];
+					test = Resource::m_texture_list->at(TextureList::MAP_FLOOR2);
 					break;
 				case FLOOR3:
-					test = m_texture_list[FLOOR3 - 1];
+					test = Resource::m_texture_list->at(TextureList::MAP_FLOOR3);
 					break;
 				}
 
@@ -75,7 +76,7 @@ public:
 	}
 
 private:
-	Texture test = "Resource/Texture/Map/floor1.png";
+	Texture test;// = "Resource/Texture/Map/floor1.png";
 	MapChip mapChip[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH];
 	enum MapTextureList {
 		MAP_TEXTURE_INIT,
@@ -83,12 +84,6 @@ private:
 		FLOOR2,
 		FLOOR3,
 		MAP_TEXTURE_MAX
-	};
-
-	Texture m_texture_list[MAP_TEXTURE_MAX] = {
-		"Resource/Texture/Map/floor1.png",
-		"Resource/Texture/Map/floor2.png",
-		"Resource/Texture/Map/floor3.png"
 	};
 };
 

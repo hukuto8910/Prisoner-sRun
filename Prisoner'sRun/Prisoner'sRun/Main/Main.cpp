@@ -5,6 +5,7 @@
 #include"../Library/Texture/Texture.h"
 #include"../Library/Draw/Draw.h"
 #include"../Map/Map.h"
+#include"../LoadResource.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
@@ -14,6 +15,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 	LPDIRECT3DDEVICE9 dev = Device::dev;
 	Key& key = Key::GetInstance();
 	//Texture test = "Resource/Object/close_locker.png";
+	
+	Resource::Load();
 	Map map;
 
 	while (Window::ProcessMessage()) {
@@ -32,6 +35,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 		Device::DrawEnd();
 	}
 
+	Resource::Relese();
 	Device::Release();
 	return 0;
 }

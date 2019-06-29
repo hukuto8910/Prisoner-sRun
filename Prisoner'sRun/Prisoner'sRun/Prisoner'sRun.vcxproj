@@ -122,6 +122,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\LoadResource.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Map\Map.h">
       <SubType>
       </SubType>

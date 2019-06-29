@@ -33,6 +33,9 @@
     <ClInclude Include="Map\Map.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\LoadResource.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\Input\Keyboard.cpp">

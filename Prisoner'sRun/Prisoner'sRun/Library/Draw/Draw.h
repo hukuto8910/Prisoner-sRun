@@ -22,5 +22,4 @@ namespace Draw2D {
 		float depth = 0.f,
 		D3DXCOLOR color = 0x00ffffff
 	);
-
 }
