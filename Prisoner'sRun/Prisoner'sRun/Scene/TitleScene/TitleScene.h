@@ -1,18 +1,18 @@
 ﻿#pragma once
 
 #include<string>
-#include"../../LoadResource/LoadResource.h"
+#include"../SceneBase.h"
 
-class Title {
+
+class Title :public SceneBase{
 public:
 	Title();
-	~Title() {};
+	~Title()override {};
 
-	void Update();
-	void Draw();
+	void Init()override;
+	void Update()override;
+	void Draw()override;
 
 private:
 	std::string m_texture;
-
-	Resource& rec = Resource::GetInsutance();
 };

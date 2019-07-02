@@ -25,7 +25,7 @@ enum TextureList {
 class Resource {
 public:
 	// シングルトン
-	static Resource& GetInsutance() {
+	static Resource& GetInstance() {
 		static Resource s_resource;
 		return s_resource;
 	}

@@ -19,6 +19,10 @@ public:
 		// 各シーンの登録
 		m_scene_list.emplace(SceneId::TITLE, new Title);
 
+		m_scene_id = SceneId::TITLE;
+		m_scene = m_scene_list[m_scene_id];
+
+		m_is_quit = false;
 	}
 
 	void Update() {
@@ -33,6 +37,21 @@ public:
 		m_scene->Draw();
 	}
 
+	bool IsQuit() {
+		return m_is_quit;
+	}
+
+private:
+	SceneManager() {}
+	~SceneManager() {
+		for (auto scene : m_scene_list) {
+
+			if (&scene != nullptr) {
+				delete scene.second;
+			}
+		}
+	}
+	
 	// 現在と新しいシーンIDを比較・更新する　引数にはm_scene_idを入れること
 	void ChackScene(const SceneId new_id) {
 
@@ -49,10 +68,6 @@ public:
 		m_scene_id = new_id;
 		m_scene = m_scene_list.find(m_scene_id)->second;
 	}
-
-private:
-	SceneManager() {}
-	~SceneManager() {}
 
 	bool m_is_quit;			// ゲームの終了フラグ
 	std::unordered_map<SceneId, SceneBase*> m_scene_list;	// シーン格納リスト

@@ -4,8 +4,8 @@
 #include"../Library/Input/Keyboard.h"
 #include"../Library/Texture/Texture.h"
 #include"../Library/Draw/Draw.h"
-#include"../Map/Map.h"
-#include"../LoadResource.h"
+#include"../LoadResource/LoadResource.h"
+#include"../Scene/SceneManager.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
@@ -14,10 +14,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 	Device::Init(h_wnd);
 	LPDIRECT3DDEVICE9 dev = Device::dev;
 	Key& key = Key::GetInstance();
-	//Texture test = "Resource/Object/close_locker.png";
 	
-	Resource::Load();
-	Map map;
+	//Resource::Load();
+	Resource& rec = Resource::GetInstance();
+	rec.Load();
+
+	SceneManager& scene_manager = SceneManager::GetInstance();
+	scene_manager.Init();
 
 	while (Window::ProcessMessage()) {
 		
@@ -25,17 +28,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 		if (key.Press(VK_ESCAPE)) {
 			break;
 		}
+		
+		scene_manager.Update();
+
+		if (scene_manager.IsQuit() == true) {
+			break;
+		}
 
 		Device::DrawStart();
 
-		// テスト用の描画
-		//Draw2D::Box(test, { 100,200 },1,1,0,0,0,0x00ffffff);
-		map.Draw();
+		//scene_manager.Draw();
 
 		Device::DrawEnd();
 	}
 
-	Resource::Relese();
+	rec.Relese();
 	Device::Release();
 	return 0;
 }

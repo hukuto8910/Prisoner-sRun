@@ -57,7 +57,6 @@ Texture::~Texture() {
 	}
 }
 
-// 
 Texture& Texture::operator=(const Texture& t) {
 	if (tex) {
 		tex->Release();

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include"../Library/Input/Keyboard.h"
+#include"../../LoadResource/LoadResource.h"
 
 
 enum SceneId {
@@ -21,13 +22,18 @@ public:
 	};
 
 
-	~SceneBase() {}
+	SceneBase() {}
+	virtual ~SceneBase() {}
 
 	// 初期化～終了処理まで必ず各派生先のシーン内で定義すること
 	virtual void Init() = 0;
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
-	virtual SceneId End() = 0;
+
+	SceneId End() {
+		m_scene_step = SceneStep::SCENE_INIT;
+		return m_new_scene;
+	}
 
 	// シーンの順路管理
 	/*
@@ -53,9 +59,10 @@ public:
 protected:
 	SceneStep m_scene_step;	// シーン内の順
 	SceneId m_scene;		// 現在のシーン
+	SceneId m_new_scene;
 
 	Key& key = Key::GetInstance();
+	Resource& rec = Resource::GetInstance();
 
 private:
-	SceneBase() {}
 };

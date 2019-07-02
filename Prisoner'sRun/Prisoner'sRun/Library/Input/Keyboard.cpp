@@ -6,7 +6,7 @@ Key& Key::GetInstance() {
 	return key;
 }
 
-bool Key::Test(BYTE key) {
+bool Key::Test(BYTE key)const {
 	return ((key & 0x80) != 0);
 }
 

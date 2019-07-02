@@ -1,11 +1,9 @@
 ﻿#pragma once
 
 #include<string>
-#include<vector>
-#include<unordered_map>
 #include"../Library/Texture/Texture.h"
 #include"../Library/Draw/Draw.h"
-#include"../LoadResource.h"
+#include"../LoadResource/LoadResource.h"
 
 
 #define MAP_CHIP_SIZE 32
@@ -27,7 +25,7 @@ struct MapChip{
 /*
 ・Dataはcsvで読み取るようにする
 ・縦はフル、横はUIを置くので、その分の幅で作成
-・アイテムはランダム、塚などの構造は基本一定
+・アイテムはランダム、床などの構造は基本一定
 */
 int mapChipData[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH] = {
 	{1,1,1,1,1,1,1,1,1,1},
@@ -60,30 +58,37 @@ public:
 				// チップ番号によって描画画像を変える
 				switch (mapChip[i][j].id) {
 				case FLOOR1:
-					test = Resource::m_texture_list->at(TextureList::MAP_FLOOR1);
+					//test = Resource::m_texture_list.at(TextureList::MAP_FLOOR1);
+					test = rec.GetTextureName(TextureList::MAP_FLOOR1);
 					break;
 				case FLOOR2:
-					test = Resource::m_texture_list->at(TextureList::MAP_FLOOR2);
+					//test = Resource::m_texture_list.at(TextureList::MAP_FLOOR2);
+					test = rec.GetTextureName(TextureList::MAP_FLOOR2);
+
 					break;
 				case FLOOR3:
-					test = Resource::m_texture_list->at(TextureList::MAP_FLOOR3);
+					//test = Resource::m_texture_list.at(TextureList::MAP_FLOOR3);
+					test = rec.GetTextureName(TextureList::MAP_FLOOR3);
+
 					break;
 				}
 
-				Draw2D::Box(test, mapChip[i][j].pos);
+				Draw2D::Box(test.c_str(), mapChip[i][j].pos);
 			}
 		}
 	}
 
 private:
-	Texture test;// = "Resource/Texture/Map/floor1.png";
+	std::string test;
 	MapChip mapChip[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH];
-	enum MapTextureList {
+	enum MapChipList {
 		MAP_TEXTURE_INIT,
 		FLOOR1,
 		FLOOR2,
 		FLOOR3,
 		MAP_TEXTURE_MAX
 	};
+
+	Resource& rec=Resource::GetInstance();
 };
 

@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+#define NOMINMAX
 #include<Windows.h>
 
 
@@ -27,7 +27,7 @@ private:
 	};
 
 
-	bool Test(BYTE key);
+	bool Test(BYTE key)const;
 
 private:
 	BYTE keys[NUM_TIMING][MAX_KEY_NUM] = {};
