@@ -25,9 +25,9 @@ enum TextureList {
 class Resource {
 public:
 	// シングルトン
-	static Resource* GetInsutance() {
+	static Resource& GetInsutance() {
 		static Resource s_resource;
-		return &s_resource;
+		return s_resource;
 	}
 
 	// 画像名の読み込み関数
