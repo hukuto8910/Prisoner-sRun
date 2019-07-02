@@ -122,6 +122,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Scene\SceneBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Scene\SceneManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Scene\TitleScene\TitleScene.h">
       <SubType>
       </SubType>

@@ -39,6 +39,12 @@
     <ClInclude Include="Scene\TitleScene\TitleScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Scene\SceneBase.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Scene\SceneManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Library\Input\Keyboard.cpp">
