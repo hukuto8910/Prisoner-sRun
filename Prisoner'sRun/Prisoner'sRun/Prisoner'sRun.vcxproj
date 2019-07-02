@@ -156,6 +156,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LoadResource\LoadResource.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Scene\TitleScene\TitleScene.cpp">
       <SubType>
       </SubType>
