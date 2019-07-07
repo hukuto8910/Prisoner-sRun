@@ -2,8 +2,9 @@
 #include"Texture.h"
 
 
+namespace {
 	std::unordered_map <std::string, Texture>tex_list;
-
+}
 	// 変換コンストラクタ
 	Texture::Texture(const char* file_name) :Texture() { // : Texture() 自身のデフォルトコンストラクタを呼び出している
 		// ファイル名が空の場合は即時returnする
