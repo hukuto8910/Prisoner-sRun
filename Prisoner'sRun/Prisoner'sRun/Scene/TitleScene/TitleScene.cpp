@@ -9,11 +9,13 @@ Title::Title() {
 };
 
 void Title::Init() {
+
 	m_texture = rec.GetTextureName(TextureList::TITLE_TEX);
 	m_scene_step = SceneStep::SCENE_UPDATE;
 }
 
 void Title::Update() {
+
 	/*
 	何かキーが入力されたら遷移する
 	*/

@@ -9,8 +9,7 @@ enum SceneId {
 	GAME_MAIN,
 	CLEAR_RESULT,
 	GAMEOVER_RESULT,
-	SCENE_QUIT,
-	SCENEID_MAX
+	SCENE_QUIT
 };
 
 class SceneBase {
