@@ -60,6 +60,7 @@ private:
 		}
 		// 終了処理が呼ばれた場合はフラグをtrueにする
 		else if (new_id == SceneId::SCENE_QUIT) {
+
 			m_is_quit = true;
 			return;
 		}

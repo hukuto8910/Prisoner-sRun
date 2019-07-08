@@ -130,6 +130,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\ResultScene\ResultScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Scene\GameScene\GameMeinScene.h">
       <SubType>
       </SubType>
@@ -176,6 +180,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\ResultScene\ResultScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Scene\GameScene\GameMainScene.cpp">
       <SubType>
       </SubType>

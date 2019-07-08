@@ -2,6 +2,7 @@
 
 
 GameMain::GameMain() {
+
 	m_scene = SceneId::GAME_MAIN;
 	m_scene_step = SceneStep::SCENE_INIT;
 }

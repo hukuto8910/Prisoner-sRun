@@ -7,8 +7,7 @@
 enum SceneId {
 	TITLE,
 	GAME_MAIN,
-	CLEAR_RESULT,
-	GAMEOVER_RESULT,
+	RESULT,
 	SCENE_QUIT
 };
 
@@ -24,15 +23,23 @@ public:
 	SceneBase() {}
 	virtual ~SceneBase() {}
 
+
 	// 初期化～終了処理まで必ず各派生先のシーン内で定義すること
+	/*
+	Init	:シーン遷移時に毎回行う初期化
+	Update	:シーン内の更新
+	Draw	:各シーンの描画
+	*/
 	virtual void Init() = 0;
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
+
 
 	SceneId End() {
 		m_scene_step = SceneStep::SCENE_INIT;
 		return m_new_scene;
 	}
+
 
 	// シーンの順路管理
 	/*
@@ -42,6 +49,7 @@ public:
 	SceneId Control() {
 
 		switch (m_scene_step) {
+
 		case SceneStep::SCENE_INIT:
 			Init();
 			break;
@@ -55,13 +63,12 @@ public:
 		return m_scene;
 	}
 
+
 protected:
 	SceneStep m_scene_step;	// シーン内の順
 	SceneId m_scene;		// 現在のシーン
-	SceneId m_new_scene;
+	SceneId m_new_scene;	// 次のシーン
 
-	Key& key = Key::GetInstance();
-	Resource& rec = Resource::GetInstance();
-
-private:
+	Key& key = Key::GetInstance();			// キーボード
+	Resource& rec = Resource::GetInstance();// 画像ソース
 };

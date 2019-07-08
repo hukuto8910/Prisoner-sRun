@@ -3,13 +3,13 @@
 #include"../SceneBase.h"
 
 
-class Result {
+class Result :public SceneBase{
 public:
 	Result();
 	~Result()override {}
 
 	void Init()override;
-	void Update()overiide;
+	void Update()override;
 	void Draw()override;
 
 private:
