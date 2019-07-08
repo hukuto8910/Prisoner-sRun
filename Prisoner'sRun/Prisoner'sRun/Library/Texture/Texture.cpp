@@ -1,10 +1,10 @@
-﻿#include"../Device/Device.h"
+﻿#include<unordered_map>
 #include"Texture.h"
 
 
-namespace {
-	std::unordered_map <std::string, Texture>tex_list;
-}
+
+	static std::unordered_map <std::string, Texture>tex_list;
+
 	// 変換コンストラクタ
 	Texture::Texture(const char* file_name) :Texture() { // : Texture() 自身のデフォルトコンストラクタを呼び出している
 		// ファイル名が空の場合は即時returnする
@@ -13,14 +13,16 @@ namespace {
 		}
 
 		auto itr = tex_list.find(file_name);
+
 		// まだ読み込まれていない場合
-		if (itr == tex_list.end()) { // endは末尾まで　itrは探してくれてる人
+		if (itr == tex_list.end()) {
 			// ファイル名を記録
 			name = file_name;
 
 			// ファイル情報を取得
 			D3DXIMAGE_INFO info;
 			if (SUCCEEDED(D3DXGetImageInfoFromFile(file_name, &info))) {
+
 				size.x = (float)info.Width;
 				size.y = (float)info.Height;
 
@@ -35,11 +37,14 @@ namespace {
 		}
 		// すでに読み込まれていた場合
 		else {
+
 			tex = itr->second.tex;
+
 			if (tex) {
 				// 参照カウント インクリメント
 				tex->AddRef();
 			}
+
 			// fastがアドレス、secondが中身
 			size = itr->second.size;
 			name = itr->second.name;
@@ -48,6 +53,7 @@ namespace {
 
 	// コピーコンストラクタ
 	Texture::Texture(const Texture&t) :tex(t), size(t.size) {
+
 		if (tex) {
 			tex->AddRef();
 		}
@@ -55,20 +61,37 @@ namespace {
 
 	// デストラクタ
 	Texture::~Texture() {
+
 		if (tex) {
 			tex->Release();
 		}
 	}
 
 	Texture& Texture::operator=(const Texture& t) {
+
 		if (tex) {
 			tex->Release();
 		}
+
 		tex = t.tex;
+
 		if (tex) {
 			tex->AddRef();
 		}
+
 		size = t.size;
 		name = t.name;
+
 		return *this;
+	}
+
+	void Texture::Relese() {
+		for (auto list = tex_list.begin(); list != tex_list.end();) {
+			if (&list != nullptr) {
+				list = tex_list.erase(list);
+			}
+			else {
+				list++;
+			}
+		}
 	}

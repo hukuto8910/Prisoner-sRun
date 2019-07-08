@@ -1,17 +1,31 @@
 ﻿#pragma once
 
-#include<d3dx9.h>
 #include<string>
-#include<unordered_map>
+#include"../Device/Device.h"
 
 
 class Texture {
 public:
-	Texture() :tex(nullptr), size(0.f, 0.f) {} // メンバイニシャライザ―　初期化
-	Texture(const char* file_name); // 変換コンストラクタ
-	Texture(const Texture& t); // コピーコンストラクタ
-	~Texture(); // デストラクタ
-	Texture& operator=(const Texture& t); // Operatorの代入演算子
+	// メンバイニシャライザ―
+	Texture() :tex(nullptr), size(0.f, 0.f) {} 
+
+	// 変換コンストラクタ
+	Texture(const char* file_name); 
+
+	// コピーコンストラクタ
+	Texture(const Texture& t); 
+	
+	// Operatorの代入演算子
+	Texture& operator=(const Texture& t); 
+
+	~Texture();
+
+	// 解放関数
+	/*
+	各シーン遷移時に前のシーンの画像を解放する
+	*/
+	void Relese();
+	
 
 	// LPDIRECT3DTEXTURE9が呼ばれたらtexのポインタを戻り値として返す
 	operator LPDIRECT3DTEXTURE9() const {
