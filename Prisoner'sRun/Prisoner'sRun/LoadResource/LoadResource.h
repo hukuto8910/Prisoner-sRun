@@ -22,6 +22,10 @@ enum TextureList {
 
 	//　キャラクター　//
 	// プレイヤー　//
+	PLAYER_NORMAL_FRONT_TEX,
+	PLAYER_NORMAL_BACK_TEX,
+	PLAYER_NORMAL_LEFT_TEX,
+	PLAYER_NORMAL_RIGHT_TEX,
 	// エネミー　//
 
 	//　ゲーム内UI　//

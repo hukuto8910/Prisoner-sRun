@@ -130,7 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\Player.h">
+    <ClInclude Include="Player\Player.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -184,7 +184,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="Player\Player.cpp">
       <SubType>
       </SubType>
     </ClCompile>

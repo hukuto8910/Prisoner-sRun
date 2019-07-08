@@ -2,7 +2,7 @@
 
 
 void Player::Init() {
-
+	
 }
 
 void Player::Update() {

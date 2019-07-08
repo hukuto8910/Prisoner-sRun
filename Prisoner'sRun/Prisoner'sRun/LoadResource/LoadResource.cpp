@@ -7,9 +7,17 @@ void Resource::Load() {
 	m_texture_list.emplace(TextureList::TITLE_TEX, "Resource/Texture/Title/title.png");
 
 	//	マップの画像登録　//
+	//　床　//
 	m_texture_list.emplace(TextureList::MAP_FLOOR1, "Resource/Texture/Map/floor1.png");
 	m_texture_list.emplace(TextureList::MAP_FLOOR2, "Resource/Texture/Map/floor2.png");
 	m_texture_list.emplace(TextureList::MAP_FLOOR3, "Resource/Texture/Map/floor3.png");
+
+	//　プレイヤー　//
+	// ノーマル　//
+	m_texture_list.emplace(TextureList::PLAYER_NORMAL_FRONT_TEX, "Resource/Texture/Player/player_front.png");
+	m_texture_list.emplace(TextureList::PLAYER_NORMAL_BACK_TEX, "Resource/Texture/Player/player_back.png");
+	m_texture_list.emplace(TextureList::PLAYER_NORMAL_LEFT_TEX, "Resource/Texture/Player/player_left.png");
+	m_texture_list.emplace(TextureList::PLAYER_NORMAL_RIGHT_TEX, "Resource/Texture/Player/player_right.png");
 
 	//	リザルト画面の画像登録	//
 	m_texture_list.emplace(TextureList::RESULT_CLEAR_TEX, "Resource/Texture/Result/result_clear.png");
