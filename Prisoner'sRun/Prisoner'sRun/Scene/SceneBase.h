@@ -2,6 +2,7 @@
 
 #include"../Library/Input/Keyboard.h"
 #include"../../LoadResource/LoadResource.h"
+#include"../Library/Texture/Texture.h"
 
 
 // シーン指定用ID
@@ -43,6 +44,7 @@ public:
 
 
 	SceneId End() {
+
 		m_scene_step = SceneStep::SCENE_INIT;
 		return m_new_scene;
 	}
@@ -77,5 +79,6 @@ protected:
 	SceneId m_new_scene;	// 次のシーン
 
 	Key& key = Key::GetInstance();			// キーボード
-	Resource& rec = Resource::GetInstance();// 画像ソース
+	Resource& res = Resource::GetInstance();// 画像ソース
+	Texture tex;
 };

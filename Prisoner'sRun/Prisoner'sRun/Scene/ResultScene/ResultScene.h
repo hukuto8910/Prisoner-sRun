@@ -13,4 +13,5 @@ public:
 	void Draw()override;
 
 private:
+	std::string m_texture;	// リザルト画面の画像
 };

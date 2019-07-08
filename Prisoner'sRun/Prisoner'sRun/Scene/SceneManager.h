@@ -3,6 +3,8 @@
 #include<unordered_map>
 #include"SceneBase.h"
 #include"TitleScene/TitleScene.h"
+#include"GameScene/GameMeinScene.h"
+#include"ResultScene/ResultScene.h"
 
 
 class SceneManager {
@@ -18,6 +20,8 @@ public:
 
 		// 各シーンの登録
 		m_scene_list.emplace(SceneId::TITLE, new Title);
+		m_scene_list.emplace(SceneId::GAME_MAIN, new GameMain);
+		m_scene_list.emplace(SceneId::RESULT, new Result);
 
 		m_scene_id = SceneId::TITLE;
 		m_scene = m_scene_list[m_scene_id];
