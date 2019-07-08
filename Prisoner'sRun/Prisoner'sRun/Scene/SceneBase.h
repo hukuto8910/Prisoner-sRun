@@ -4,6 +4,7 @@
 #include"../../LoadResource/LoadResource.h"
 
 
+// シーン指定用ID
 enum SceneId {
 	TITLE,
 	GAME_MAIN,
@@ -11,8 +12,11 @@ enum SceneId {
 	SCENE_QUIT
 };
 
+
+// シーンの基底クラス
 class SceneBase {
 public:
+	// シーン内の処理ステップ
 	enum SceneStep {
 		SCENE_INIT,
 		SCENE_UPDATE,
@@ -20,6 +24,9 @@ public:
 	};
 
 
+	/*
+	各シーンのコンストラクタでは、自身のSceneIdと最初のSceneStepを指定すること
+	*/
 	SceneBase() {}
 	virtual ~SceneBase() {}
 
