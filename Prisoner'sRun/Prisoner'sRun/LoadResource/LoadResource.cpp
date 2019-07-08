@@ -13,7 +13,7 @@ void Resource::Load() {
 
 	//	リザルト画面の画像登録	//
 	m_texture_list.emplace(TextureList::RESULT_CLEAR_TEX, "Resource/Texture/Result/result_clear.png");
-	m_texture_list.emplace(TextureList::RESULT_CLEAR_TEX, "Resource/Texture/Result/result_gameover.png");
+	m_texture_list.emplace(TextureList::RESULT_GAMEOVER_TEX, "Resource/Texture/Result/result_gameover.png");
 }
 
 void Resource::Relese() {
