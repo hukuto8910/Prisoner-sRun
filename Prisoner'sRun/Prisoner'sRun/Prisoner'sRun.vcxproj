@@ -180,6 +180,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Map\Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Scene\ResultScene\ResultScene.cpp">
       <SubType>
       </SubType>
