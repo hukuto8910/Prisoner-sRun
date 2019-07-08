@@ -23,9 +23,9 @@ public:
 		m_scene_list.emplace(SceneId::GAME_MAIN, new GameMain);
 		m_scene_list.emplace(SceneId::RESULT, new Result);
 
-		m_scene_id = SceneId::TITLE;
+		m_scene_id = SceneId::GAME_MAIN;
 		m_scene = m_scene_list[m_scene_id];
-
+		m_new_scene_id = m_scene_id;
 		m_is_quit = false;
 	}
 
