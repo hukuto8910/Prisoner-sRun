@@ -24,15 +24,15 @@ void Map::Draw() {
 			switch (m_mapChip[i][j].id) {
 
 			case FLOOR1:
-				m_texture = res.GetTextureName(TextureList::MAP_FLOOR1);
+				m_texture = res.GetTextureName(TextureList::MAP_FLOOR1_TEX);
 				break;
 
 			case FLOOR2:
-				m_texture = res.GetTextureName(TextureList::MAP_FLOOR2);
+				m_texture = res.GetTextureName(TextureList::MAP_FLOOR2_TEX);
 				break;
 
 			case FLOOR3:
-				m_texture = res.GetTextureName(TextureList::MAP_FLOOR3);
+				m_texture = res.GetTextureName(TextureList::MAP_FLOOR3_TEX);
 				break;
 			}
 
