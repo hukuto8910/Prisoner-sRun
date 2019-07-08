@@ -59,16 +59,16 @@ public:
 				switch (mapChip[i][j].id) {
 				case FLOOR1:
 					//test = Resource::m_texture_list.at(TextureList::MAP_FLOOR1);
-					test = rec.GetTextureName(TextureList::MAP_FLOOR1);
+					test = res.GetTextureName(TextureList::MAP_FLOOR1);
 					break;
 				case FLOOR2:
 					//test = Resource::m_texture_list.at(TextureList::MAP_FLOOR2);
-					test = rec.GetTextureName(TextureList::MAP_FLOOR2);
+					test = res.GetTextureName(TextureList::MAP_FLOOR2);
 
 					break;
 				case FLOOR3:
 					//test = Resource::m_texture_list.at(TextureList::MAP_FLOOR3);
-					test = rec.GetTextureName(TextureList::MAP_FLOOR3);
+					test = res.GetTextureName(TextureList::MAP_FLOOR3);
 
 					break;
 				}
@@ -89,6 +89,6 @@ private:
 		MAP_TEXTURE_MAX
 	};
 
-	Resource& rec=Resource::GetInstance();
+	Resource& res=Resource::GetInstance();
 };
 

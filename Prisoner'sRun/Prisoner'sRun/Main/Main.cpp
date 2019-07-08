@@ -6,6 +6,7 @@
 #include"../Library/Draw/Draw.h"
 #include"../LoadResource/LoadResource.h"
 #include"../Scene/SceneManager.h"
+#include"../Map/Map.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
@@ -16,8 +17,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 	Key& key = Key::GetInstance();
 	
 	//Resource::Load();
-	Resource& rec = Resource::GetInstance();
-	rec.Load();
+	Resource& res = Resource::GetInstance();
+	res.Load();
+	Map m;
 
 	SceneManager& scene_manager = SceneManager::GetInstance();
 	scene_manager.Init();
@@ -37,12 +39,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 
 		Device::DrawStart();
 
-		//scene_manager.Draw();
+		scene_manager.Draw();
+		//m.Draw();
 
 		Device::DrawEnd();
 	}
 
-	rec.Relese();
+	res.Relese();
 	Device::Release();
 	return 0;
 }
