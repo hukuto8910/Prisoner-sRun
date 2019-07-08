@@ -22,4 +22,15 @@ namespace Draw2D {
 		float depth = 0.f,
 		D3DXCOLOR color = 0x00ffffff
 	);
+
+	// 四角形の統合画像アニメーション描画関数
+	void BoxAnimation(
+		const Texture& file_name,
+		D3DXVECTOR2 pos,
+		float x_cut_num = 0, float y_cut_num = 0,
+		int tex_num = 0,
+		float depth = 0.f,
+		float width = 1.f, float height = 1.f,
+		float offset_x = 0.f, float offset_y = 0.f
+	);
 }
