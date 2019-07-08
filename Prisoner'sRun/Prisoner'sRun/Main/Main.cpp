@@ -6,27 +6,26 @@
 #include"../Library/Draw/Draw.h"
 #include"../LoadResource/LoadResource.h"
 #include"../Scene/SceneManager.h"
-#include"../Map/Map.h"
 
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 	
 	HWND h_wnd = Window::MakeWindow(WINDOW_W, WINDOW_H);
 	Device::Init(h_wnd);
-	LPDIRECT3DDEVICE9 dev = Device::dev;
-	Key& key = Key::GetInstance();
 	
-	//Resource::Load();
-	Resource& res = Resource::GetInstance();
-	res.Load();
-	Map m;
+	LPDIRECT3DDEVICE9 dev = Device::dev;
 
+	Key& key = Key::GetInstance();
+	Resource& res = Resource::GetInstance();
 	SceneManager& scene_manager = SceneManager::GetInstance();
+	
 	scene_manager.Init();
+	res.Load();
 
 	while (Window::ProcessMessage()) {
 		
 		key.Update();
+
 		if (key.Press(VK_ESCAPE)) {
 			break;
 		}
@@ -40,7 +39,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 		Device::DrawStart();
 
 		scene_manager.Draw();
-		//m.Draw();
 
 		Device::DrawEnd();
 	}

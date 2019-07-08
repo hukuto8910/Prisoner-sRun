@@ -1,6 +1,7 @@
 ﻿#include"GameMeinScene.h"
 
 
+
 GameMain::GameMain() {
 	
 	m_scene = SceneId::GAME_MAIN;
@@ -8,6 +9,8 @@ GameMain::GameMain() {
 }
 
 void GameMain::Init() {
+
+	m_player.Init();
 
 	// 次シーン指定変数を現在のシーンで初期化
 	m_new_scene = m_scene;
@@ -32,5 +35,5 @@ void GameMain::Update() {
 }
 
 void GameMain::Draw() {
-
+	m_player.Draw();
 }

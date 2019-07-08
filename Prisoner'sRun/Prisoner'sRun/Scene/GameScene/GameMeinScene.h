@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 #include"../SceneBase.h"
-//#include"../../Map/Map.h"
+#include"../../Map/Map.h"
+#include"../../Player/Player.h"
 
 
 class GameMain :public SceneBase{
@@ -12,4 +13,7 @@ public:
 	void Init()override;
 	void Update()override;
 	void Draw()override;
+private:
+	//Map m_map;
+	Player m_player;
 };
