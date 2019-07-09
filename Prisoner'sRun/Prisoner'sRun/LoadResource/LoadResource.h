@@ -14,9 +14,9 @@ enum TextureList {
 
 	//  マップチップ　//
 	//　床　//
-	MAP_FLOOR1,
-	MAP_FLOOR2,
-	MAP_FLOOR3,
+	MAP_FLOOR1_TEX,
+	MAP_FLOOR2_TEX,
+	MAP_FLOOR3_TEX,
 	// 壁　//
 	// 天井　//
 
