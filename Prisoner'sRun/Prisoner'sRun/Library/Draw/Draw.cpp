@@ -14,11 +14,14 @@ struct Vertex {
 
 namespace Draw2D {
 
+	// 四角形の画像描画
 	void Box(const Texture& file_name, D3DXVECTOR2 pos, float w, float h, float offset_x, float offset_y, float depth, D3DXCOLOR color) {
 
+		// 画像サイズの取得
 		float width = file_name.GetSize().x * w;
 		float height = file_name.GetSize().y * h;
 
+		// 描画位置の計算
 		float x1 = pos.x - width * (offset_x);			// 左上X頂点
 		float x2 = pos.x + width * (1.f - offset_x);	// 右下X頂点
 		float y1 = pos.y - height * (offset_y);			// 左上Y頂点
@@ -38,55 +41,69 @@ namespace Draw2D {
 		Device::dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
 	}
 
-	void BoxAnimation(const Texture& file_name, D3DXVECTOR2 pos, float x_cut_num, float y_cut_num, int tex_num, float depth, float w, float h, float offset_x, float offset_y) {
+	
+	// 四角形の統合画像のアニメーション描画
+	void BoxAnimation(const Texture& file_name, D3DXVECTOR2 pos, int x_cut_num, int y_cut_num, int tex_num, float depth, float w, float h, float offset_x, float offset_y) {
 
 		float width = file_name.GetSize().x * w;
 		float height = file_name.GetSize().y * h;
 
-		float x1 = pos.x - width * (offset_x);			// 左上X頂点
-		float x2 = pos.x + width * (1.f - offset_x);	// 右下X頂点
-		float y1 = pos.y - height * (offset_y);			// 左上Y頂点
-		float y2 = pos.y + height * (1.f - offset_y);	// 右下Y頂点
+		float x1 = pos.x - (width / x_cut_num) * (offset_x);			
+		float x2 = pos.x + (width / x_cut_num) * (1.f - offset_x);	
+		float y1 = pos.y - (height / y_cut_num) * (offset_y);			
+		float y2 = pos.y + (height / y_cut_num) * (1.f - offset_y);	
 		
-		float u = 1.f;
-		float v = 1.f;
+
+		// UVの初期化
+		float uv_x1 = 0.f;		// 画像の左上頂点
+		float uv_x2 = 1.f;		// 画像の右上頂点
+		float uv_y1 = 0.f;		// 画像の右下頂点
+		float uv_y2 = 1.f;		// 画像の左下頂点
+
+		// ｘ軸の分割計算
 		if (x_cut_num > 0) {
-			u /= x_cut_num;
+
+			// 分割後の1枚の横幅
+			float cut_size = 1.0f / x_cut_num;
+
+			// 縦分割がある場合は、余り算で計算する
+			if (tex_num >= x_cut_num) {
+				uv_x1 = cut_size * (tex_num % x_cut_num);
+			}
+			else {
+				uv_x1 = cut_size * tex_num;
+			}
+
+			uv_x2 = uv_x1 + cut_size;
 		}
+
+		// ｙ軸の分割計算
 		if (y_cut_num > 0) {
-			v /=  y_cut_num;
+
+			// 分割後の1枚の縦幅
+			float cut_size = 1.0f / y_cut_num;
+
+			// ｘ軸画像が回り切れば、画像の開始位置を次の列に進める
+			if ((tex_num + 1) % x_cut_num == 0) {
+				uv_y1 += cut_size * ((tex_num + 1) / x_cut_num);
+			}
+
+			uv_y2 = uv_y1 + cut_size;
 		}
+		
 
 		Vertex vtx[4] = {
 			// 頂点X, 頂点Y, 深度, 除算数, 頂点色, 描画X頂点, 描画Y頂点
-			{{x1, y1, depth, 1.f}, 0x00ffffff, {u * tex_num, v * tex_num}},
-			{{x2, y1, depth, 1.f}, 0x00ffffff, {u * tex_num + u, v * tex_num}},
-			{{x2, y2, depth, 1.f}, 0x00ffffff, {u * tex_num, v * tex_num + v}},
-			{{x1, y2, depth, 1.f}, 0x00ffffff, {u * tex_num + u, v * tex_num + v}}
+			{{x1, y1, depth, 1.f}, 0x00ffffff, {uv_x1,uv_y1}},
+			{{x2, y1, depth, 1.f}, 0x00ffffff, {uv_x2,uv_y1}},
+			{{x2, y2, depth, 1.f}, 0x00ffffff, {uv_x2,uv_y2}},
+			{{x1, y2, depth, 1.f}, 0x00ffffff, {uv_x1,uv_y2}}
 		};
 
 		Device::dev->SetTexture(0, file_name);
 		Device::dev->SetFVF(FVF);
 
 		Device::dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
-
-		/*
-		左上(0,0)　右上(1,0)
-		左下(0,1)　右下(1,1)
-		UVcut＝2,0　　＝2枚
-		{0, 0},{0.5, 0},{0.5, 1},{0, 1} =1枚目
-		{0.5, 1},{1, 1},{0.5, 1},{1, 1} =2枚目
-
-		　画像/分割数　*　画像番号　＝　u
-		  画像/分割数　*　画像
-		1u = 1/2 = 0.5*0 = 0 , 2u = 1/2 = 0.5*0 + 0.5 = 0.5
-		3u = 1/2 = 0.5*0 = 0 , 4u = 1/2 = 0.5*0 + 0.5 = 0.5
-		1y = 1*0 = 0	 , 2y = 1*0 = 0
-		3y = 1*0 + 1 = 1 , 4y = 1*0 + 1 =1
-		
-		2_1u = 1/2 = 0.5*1 = 0.5
-		2_2u = 1/2 = 0.5*1 
-		*/
 	}
 
 }
