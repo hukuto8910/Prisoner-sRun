@@ -18,5 +18,5 @@ void Player::Update() {
 
 void Player::Draw() {
 	//Draw2D::Box(m_texture.c_str(), m_pos);
-	Draw2D::BoxAnimation(m_texture.c_str(), m_pos, 4, 1);
+	Draw2D::BoxAnimation(m_texture.c_str(), m_pos, 4, 2);
 }

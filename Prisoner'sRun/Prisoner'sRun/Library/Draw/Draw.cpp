@@ -83,21 +83,18 @@ namespace Draw2D {
 			// 分割後の1枚の縦幅
 			float cut_size = 1.0f / y_cut_num;
 
-			// ｘ軸画像が回り切れば、画像の開始位置を次の列に進める
-			if ((tex_num + 1) % x_cut_num == 0) {
-				uv_y1 += cut_size * ((tex_num + 1) / x_cut_num);
-			}
-
+			// 現在のｘ軸をアニメーション番号に割ったものをサイズと掛ける
+			uv_x1 = cut_size * (tex_num / x_cut_num);
 			uv_y2 = uv_y1 + cut_size;
 		}
 		
 
 		Vertex vtx[4] = {
 			// 頂点X, 頂点Y, 深度, 除算数, 頂点色, 描画X頂点, 描画Y頂点
-			{{x1, y1, depth, 1.f}, 0x00ffffff, {uv_x1,uv_y1}},
-			{{x2, y1, depth, 1.f}, 0x00ffffff, {uv_x2,uv_y1}},
-			{{x2, y2, depth, 1.f}, 0x00ffffff, {uv_x2,uv_y2}},
-			{{x1, y2, depth, 1.f}, 0x00ffffff, {uv_x1,uv_y2}}
+			{{x1, y1, depth, 1.f}, 0x00ffffff, {uv_x1, uv_y1}},
+			{{x2, y1, depth, 1.f}, 0x00ffffff, {uv_x2, uv_y1}},
+			{{x2, y2, depth, 1.f}, 0x00ffffff, {uv_x2, uv_y2}},
+			{{x1, y2, depth, 1.f}, 0x00ffffff, {uv_x1, uv_y2}}
 		};
 
 		Device::dev->SetTexture(0, file_name);
