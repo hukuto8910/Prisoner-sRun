@@ -25,6 +25,7 @@ void GameMain::Update() {
 	ゲーム内の処理
 	Managerクラス作ってそれを回す
 	*/
+	m_player.Update();
 
 	// デバック用
 	if (key.Press(VK_F1)) {
