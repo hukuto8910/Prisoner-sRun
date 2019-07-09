@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include<string>
-#include"../Library/Texture/Texture.h"
 #include"../Library/Draw/Draw.h"
 #include"../LoadResource/LoadResource.h"
 
