@@ -130,6 +130,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Enemy\Enemy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Object\CharacterBase.h">
       <SubType>
       </SubType>
@@ -192,6 +196,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Enemy\Enemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Player\Player.cpp">
       <SubType>
       </SubType>

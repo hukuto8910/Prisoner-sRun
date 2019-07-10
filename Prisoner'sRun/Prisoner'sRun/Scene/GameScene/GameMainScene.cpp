@@ -11,6 +11,7 @@ GameMain::GameMain() {
 void GameMain::Init() {
 
 	m_player.Init();
+	m_enemy.Init();
 
 	// 次シーン指定変数を現在のシーンで初期化
 	m_new_scene = m_scene;
@@ -26,6 +27,7 @@ void GameMain::Update() {
 	Managerクラス作ってそれを回す
 	*/
 	m_player.Update();
+	m_enemy.Update();
 
 	// デバック用
 	if (key.Press(VK_F1)) {
@@ -37,4 +39,5 @@ void GameMain::Update() {
 
 void GameMain::Draw() {
 	m_player.Draw();
+	m_enemy.Draw();
 }
