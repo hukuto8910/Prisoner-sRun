@@ -18,6 +18,12 @@ void Resource::Load() {
 	m_texture_list.emplace(TextureList::PLAYER_NORMAL_LEFT_TEX, "Resource/Texture/Player/player_left.png");
 	m_texture_list.emplace(TextureList::PLAYER_NORMAL_RIGHT_TEX, "Resource/Texture/Player/player_right.png");
 
+	//　敵　//
+	m_texture_list.emplace(TextureList::ENEMY_FRONT_TEX, "Resource/Texture/Enemy/enemy_front.png");
+	m_texture_list.emplace(TextureList::ENEMY_BACK_TEX, "Resource/Texture/Enemy/enemy_back.png");
+	m_texture_list.emplace(TextureList::ENEMY_LEFT_TEX, "Resource/Texture/Enemy/enemy_left.png");
+	m_texture_list.emplace(TextureList::ENEMT_RIGHT_TEX, "Resource/Texture/Enemy/enemy_right.png");
+
 	//	リザルト画面の画像登録	//
 	m_texture_list.emplace(TextureList::RESULT_CLEAR_TEX, "Resource/Texture/Result/result_clear.png");
 	m_texture_list.emplace(TextureList::RESULT_GAMEOVER_TEX, "Resource/Texture/Result/result_gameover.png");
