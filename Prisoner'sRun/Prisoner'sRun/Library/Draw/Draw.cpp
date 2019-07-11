@@ -67,7 +67,7 @@ namespace Draw2D {
 			float cut_size = 1.0f / x_cut_num;
 
 			// 縦分割がある場合は、余り算で計算する
-			if (tex_num >= x_cut_num) {
+			if (tex_num > x_cut_num) {
 				uv_x1 = cut_size * (tex_num % x_cut_num);
 			}
 			else {
@@ -84,7 +84,7 @@ namespace Draw2D {
 			float cut_size = 1.0f / y_cut_num;
 
 			// 現在のｘ軸をアニメーション番号に割ったものをサイズと掛ける
-			uv_x1 = cut_size * (tex_num / x_cut_num);
+			uv_y1 = cut_size * (tex_num / x_cut_num);
 			uv_y2 = uv_y1 + cut_size;
 		}
 		
