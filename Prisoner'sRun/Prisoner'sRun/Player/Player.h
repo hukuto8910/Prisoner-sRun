@@ -1,12 +1,10 @@
 ﻿#pragma once
 
-#include<string>
-#include<d3dx9.h>
-#include"../LoadResource/LoadResource.h"
+#include"../Object/CharacterBase.h"
 #include"../Library/Input/Keyboard.h"
 
 
-class Player {
+class Player :public CharacterBase{
 public:
 	Player() {}
 	~Player() {}
@@ -24,6 +22,5 @@ private:
 	// 画像の分割数
 	const int TEXTURE_PARTITION_NUM = 4;
 
-	Key& key = Key::GetInstance();
-	Resource& res = Resource::GetInstance();
+	Key& key = Key::GetInstance();	// 移動用のキーボード変数
 };
