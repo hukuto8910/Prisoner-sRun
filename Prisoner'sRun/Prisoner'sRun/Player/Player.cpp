@@ -3,6 +3,7 @@
 
 
 void Player::Init() {
+
 	m_pos = { 0,0 };
 	m_speed = 5.f;
 

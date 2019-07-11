@@ -38,7 +38,7 @@ public:
 	}
 
 protected:
-	int m_speed;	// 移動速度
+	float m_speed;	// 移動速度
 
 	int m_animation_num;		// アニメーション番号
 	int m_animation_count;		// アニメーション更新用カウント
