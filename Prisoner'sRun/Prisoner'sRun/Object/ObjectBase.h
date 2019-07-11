@@ -14,7 +14,7 @@ public:
 	//  純粋仮想関数　//　
 	/*
 	派生先の実体を作るオブジェクトのクラスで必ず定義すること
-	抽象クラスには定義しなくてもいい
+	抽象クラスは定義しなくてもいい
 	*/
 	//初期化
 	virtual void Init() = 0;
@@ -24,8 +24,8 @@ public:
 	virtual void Draw() = 0;
 
 protected:
-	std::string m_texture;	// 画像
 	D3DXVECTOR2 m_pos;		// 位置座標
+	std::string m_texture;	// 画像
 
 	Resource& res = Resource::GetInstance();	// 画像指定用Resource変数
 };

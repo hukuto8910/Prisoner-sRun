@@ -1,5 +1,4 @@
 ﻿#include"Enemy.h"
-#include"../Library/Draw/Draw.h"
 
 
 void Enemy::Init() {

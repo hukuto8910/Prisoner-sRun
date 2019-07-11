@@ -1,5 +1,4 @@
 ﻿#include"Player.h"
-#include"../Library/Draw/Draw.h"
 
 
 void Player::Init() {
