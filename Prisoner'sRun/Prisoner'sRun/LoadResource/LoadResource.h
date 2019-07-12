@@ -69,7 +69,7 @@ public:
 	使用例：res.GetTextureName(TextureList::TITLE_TEX);
 	引数で上記に定義されている定数TextureListから、使用したい画像の定数名を指定する
 	*/
-	std::string GetTextureName(TextureList tex_id);
+	std::string GetTextureName(TextureList texId);
 
 private:
 	Resource() {}

@@ -41,9 +41,9 @@ private:
 	};
 
 	struct MapChip {
-		Texture tex;
-		D3DXVECTOR2 pos;
-		int id;
+		Texture tex;		// 画像
+		D3DXVECTOR2 pos;	// 描画座標
+		int id;				// マップチップ番号
 	};
 
 	std::string m_texture;

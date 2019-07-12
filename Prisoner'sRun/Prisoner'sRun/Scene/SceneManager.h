@@ -57,20 +57,20 @@ private:
 	}
 	
 	// 現在と新しいシーンIDを比較・更新する　引数にはm_scene_idを入れること
-	void ChackScene(const SceneId new_id) {
+	void ChackScene(const SceneId newId) {
 
-		if (m_scene_id == new_id) {
+		if (m_scene_id == newId) {
 			return;
 		}
 		// 終了処理が呼ばれた場合はフラグをtrueにする
-		else if (new_id == SceneId::SCENE_QUIT) {
+		else if (newId == SceneId::SCENE_QUIT) {
 
 			m_is_quit = true;
 			return;
 		}
 
 		// 現在のシーンと違う場合、idとシーンを新しいものに更新する
-		m_scene_id = new_id;
+		m_scene_id = newId;
 		m_scene = m_scene_list.find(m_scene_id)->second;
 	}
 

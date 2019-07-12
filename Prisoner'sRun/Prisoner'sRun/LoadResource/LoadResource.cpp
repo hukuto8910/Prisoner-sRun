@@ -43,10 +43,10 @@ void Resource::Relese() {
 	}
 }
 
-std::string Resource::GetTextureName(TextureList tex_id) {
+std::string Resource::GetTextureName(TextureList texId) {
 
 	// 指定されたTextureListのidに登録された画像を検索して画像名を返す
-	auto tex = m_texture_list.find(tex_id);
+	auto tex = m_texture_list.find(texId);
 
 	if (&tex == nullptr) {
 		return nullptr;

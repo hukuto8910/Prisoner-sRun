@@ -3,31 +3,32 @@
 
 
 
-	static std::unordered_map <std::string, Texture>tex_list;
+	static std::unordered_map <std::string, Texture>tex_list;	// 画像保存リスト
 
 	// 変換コンストラクタ
-	Texture::Texture(const char* file_name) :Texture() { // : Texture() 自身のデフォルトコンストラクタを呼び出している
+	Texture::Texture(const char* fileName) :Texture() {
+
 		// ファイル名が空の場合は即時returnする
-		if (file_name == nullptr || *file_name == '\0') {
+		if (fileName == nullptr || *fileName == '\0') {
 			return;
 		}
 
-		auto itr = tex_list.find(file_name);
+		auto itr = tex_list.find(fileName);
 
 		// まだ読み込まれていない場合
 		if (itr == tex_list.end()) {
-			// ファイル名を記録
-			name = file_name;
+
+			name = fileName;
 
 			// ファイル情報を取得
 			D3DXIMAGE_INFO info;
-			if (SUCCEEDED(D3DXGetImageInfoFromFile(file_name, &info))) {
+			if (SUCCEEDED(D3DXGetImageInfoFromFile(fileName, &info))) {
 
 				size.x = (float)info.Width;
 				size.y = (float)info.Height;
 
 				// テクスチャの読み込み
-				D3DXCreateTextureFromFile(Device::dev, file_name, &tex);
+				D3DXCreateTextureFromFile(Device::dev, fileName, &tex);
 				// テクスチャの登録
 				tex_list.emplace(name, *this); // nameとthis(自身)を照らし合わせる
 			}
@@ -86,7 +87,9 @@
 	}
 
 	void Texture::Relese() {
+
 		for (auto list = tex_list.begin(); list != tex_list.end();) {
+
 			if (&list != nullptr) {
 				list = tex_list.erase(list);
 			}

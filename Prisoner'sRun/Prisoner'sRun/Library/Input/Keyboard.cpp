@@ -20,14 +20,14 @@ void Key::Update() {
 //	memset(keys, 0, sizeof(keys));
 //}
 
-bool Key::On(int n_vir_key) {
-	return Test(keys[0][n_vir_key]);
+bool Key::On(int nVirKey) {
+	return Test(keys[0][nVirKey]);
 }
 
-bool Key::Press(int n_vir_key) {
-	return Test(keys[0][n_vir_key]) && !Test(keys[1][n_vir_key]);
+bool Key::Press(int nVirKey) {
+	return Test(keys[0][nVirKey]) && !Test(keys[1][nVirKey]);
 }
 
-bool Key::Release(int n_vir_key) {
-	return !Test(keys[0][n_vir_key]) && Test(keys[1][n_vir_key]);
+bool Key::Release(int nVirKey) {
+	return !Test(keys[0][nVirKey]) && Test(keys[1][nVirKey]);
 }

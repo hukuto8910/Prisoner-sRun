@@ -3,7 +3,7 @@
 #include<Windows.h>
 
 
-const int MAX_KEY_NUM = 256;
+#define MAX_KEY_NUM  256
 
 
 struct Key {
@@ -13,11 +13,11 @@ public:
 	// 更新
 	void Update();
 	// 押されている間
-	bool On(int n_vir_key);
+	bool On(int nVirKey);
 	// 押した瞬間
-	bool Press(int n_vir_key);
+	bool Press(int nVirKey);
 	// 離した瞬間
-	bool Release(int n_vir_key);
+	bool Release(int nVirKey);
 
 private:
 	enum Timing {

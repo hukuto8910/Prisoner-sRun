@@ -15,10 +15,10 @@ namespace Draw2D {
 		第8　：頂点カラー
 	*/
 	void Box(
-		const Texture& file_name,
+		const Texture& fileName,
 		D3DXVECTOR2 pos,
 		float width = 1.f, float height = 1.f,
-		float offset_x = 0.f, float offset_y = 0.f,
+		float offsetX = 0.f, float offsetY = 0.f,
 		float depth = 0.f,
 		D3DXCOLOR color = 0x00ffffff
 	);
@@ -41,12 +41,12 @@ namespace Draw2D {
 		・分割しない場合は、1を入れる
 	*/
 	void BoxAnimation(
-		const Texture& file_name,
+		const Texture& fileName,
 		D3DXVECTOR2 pos,
-		int x_cut_num, int y_cut_num,
-		int tex_num,
+		int xCutNum, int yCutNum,
+		int texNum,
 		float depth = 0.f,
 		float width = 1.f, float height = 1.f,
-		float offset_x = 0.f, float offset_y = 0.f
+		float offsetX = 0.f, float offsetY = 0.f
 	);
 }

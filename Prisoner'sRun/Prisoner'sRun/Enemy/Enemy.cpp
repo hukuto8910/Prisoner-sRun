@@ -17,6 +17,7 @@ void Enemy::Update() {
 }
 
 void Enemy::Draw() {
+
 	Draw2D::BoxAnimation(m_texture.c_str(), m_pos, TEXTURE_PARTITION_NUM, 1, m_animation_num);
 	// アニメーションの更新
 	AnimationCount(m_animation_speed);

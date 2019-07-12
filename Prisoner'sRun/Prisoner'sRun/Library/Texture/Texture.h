@@ -10,7 +10,7 @@ public:
 	Texture() :tex(nullptr), size(0.f, 0.f) {} 
 
 	// 変換コンストラクタ
-	Texture(const char* file_name); 
+	Texture(const char* fileName); 
 
 	// コピーコンストラクタ
 	Texture(const Texture& t); 
@@ -19,6 +19,7 @@ public:
 	Texture& operator=(const Texture& t); 
 
 	~Texture();
+
 
 	// 解放関数
 	/*
@@ -40,7 +41,7 @@ public:
 	}
 
 private:
-	LPDIRECT3DTEXTURE9 tex;
-	D3DXVECTOR2 size;
-	std::string name;
+	LPDIRECT3DTEXTURE9 tex;	// 画像
+	D3DXVECTOR2 size;		// 画像サイズ
+	std::string name;		// 画像名
 };

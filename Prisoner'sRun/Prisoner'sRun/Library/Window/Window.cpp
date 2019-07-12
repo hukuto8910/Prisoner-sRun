@@ -4,10 +4,12 @@
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 
 	switch (uMsg) {
+
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;
 	}
+
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
@@ -41,7 +43,7 @@ namespace Window {
 		}
 
 		// ウィンドウ作成
-		HWND hWnd = CreateWindow(
+		HWND h_wnd = CreateWindow(
 			TEXT("ウィンドウ"),					// ウィンドウクラス名
 			TEXT("default"),					// ウィンドウ名
 			WS_OVERLAPPEDWINDOW,/*WS_POPUP,*/	// ウィンドウスタイル
@@ -55,20 +57,25 @@ namespace Window {
 			nullptr								// CREATESTRUCTの構造体ポインタ
 		);
 
-		if (hWnd == nullptr) {
+		if (h_wnd == nullptr) {
+
 			MessageBox(0, "ウィンドウクラスの作成に失敗", nullptr, MB_OK);
 			return 0;
 		}
 
 		// ウィンドウの表示
-		ShowWindow(hWnd, SW_SHOW);
-		return hWnd;
+		ShowWindow(h_wnd, SW_SHOW);
+
+		return h_wnd;
 	}
 
 
 	bool ProcessMessage() {
+
 		MSG msg;
+
 		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 
