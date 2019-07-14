@@ -15,7 +15,7 @@ public:
 	void Update()override;
 	void Draw()override;
 private:
-	//Map m_map;
+	Map m_map;
 	Player m_player;
 	Enemy m_enemy;
 };

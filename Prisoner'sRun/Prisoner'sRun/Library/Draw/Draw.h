@@ -9,17 +9,17 @@ namespace Draw2D {
 	/*
 		第1　：画像名
 		第2　：描画位置
-		第3,4：描画サイズ(1＝画像ピクセルサイズ)　デフォルト：1
+		第3,4：深度(0＝最前,1＝最背)　デフォルト：0
 		第5,6：オフセット　デフォルト：0(左上)
-		第7　：深度(0＝最前,1＝最背)　デフォルト：0
+		第7　：描画サイズ(1＝画像ピクセルサイズ)　デフォルト：1
 		第8　：頂点カラー
 	*/
 	void Box(
 		const Texture& fileName,
 		D3DXVECTOR2 pos,
+		float depth = 0.f,
 		float width = 1.f, float height = 1.f,
 		float offsetX = 0.f, float offsetY = 0.f,
-		float depth = 0.f,
 		D3DXCOLOR color = 0x00ffffff
 	);
 

@@ -15,7 +15,7 @@ struct Vertex {
 namespace Draw2D {
 
 	// 四角形の画像描画
-	void Box(const Texture& fileName, D3DXVECTOR2 pos, float w, float h, float offsetX, float offsetY, float depth, D3DXCOLOR color) {
+	void Box(const Texture& fileName, D3DXVECTOR2 pos, float depth, float w, float h, float offsetX, float offsetY, D3DXCOLOR color) {
 
 		// 画像サイズの取得
 		float width = fileName.GetSize().x * w;

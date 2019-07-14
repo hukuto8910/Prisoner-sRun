@@ -14,6 +14,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 	Device::Init(h_wnd);
 	
 	LPDIRECT3DDEVICE9 dev = Device::dev;
+	// 透過処理　以下調べて別途で改めて記述すること
+	//dev->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
+	dev->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+	//dev->SetRenderState(D3DRS_ALPHAREF, 0x0000000);
+	dev->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
 
 	Key& key = Key::GetInstance();
 	Resource& res = Resource::GetInstance();

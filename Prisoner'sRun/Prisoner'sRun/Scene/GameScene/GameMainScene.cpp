@@ -28,6 +28,7 @@ void GameMain::Update() {
 	*/
 	m_player.Update();
 	m_enemy.Update();
+	m_map.Create();
 
 	// デバック用
 	if (key.Press(VK_F1)) {
@@ -40,4 +41,5 @@ void GameMain::Update() {
 void GameMain::Draw() {
 	m_player.Draw();
 	m_enemy.Draw();
+	m_map.Draw();
 }
