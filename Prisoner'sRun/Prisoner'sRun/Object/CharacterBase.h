@@ -1,10 +1,11 @@
 ﻿#pragma once
 
 #include"ObjectBase.h"
+#include"../Collision/Collision.h"
 
 
 // キャラクターの基底クラス
-class CharacterBase :public ObjectBase {
+class CharacterBase :public CollisionObject {
 public:
 	CharacterBase() {
 		m_animation_count = 0;

@@ -23,7 +23,7 @@ namespace Draw2D {
 
 		// 描画位置の計算
 		float x1 = pos.x - width * (offsetX);			// 左上X頂点
-		float x2 = pos.x + width * (1.f - offsetX);	// 右下X頂点
+		float x2 = pos.x + width * (1.f - offsetX);		// 右下X頂点
 		float y1 = pos.y - height * (offsetY);			// 左上Y頂点
 		float y2 = pos.y + height * (1.f - offsetY);	// 右下Y頂点
 

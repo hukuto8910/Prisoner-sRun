@@ -10,6 +10,12 @@ void Player::Init() {
 	m_animation_num = 0;
 	m_animation_speed = 10;
 	m_texture = res.GetTextureName(TextureList::PLAYER_NORMAL_FRONT_TEX);
+
+	m_rect_collider.x = m_pos.x;
+	m_rect_collider.y = m_pos.y;
+	m_rect_collider.heigth = 128;
+	m_rect_collider.wide = 64;
+	m_colliderType = Collision::ColliderType::RECT;
 }
 
 void Player::Update() {
@@ -23,7 +29,7 @@ void Player::Update() {
 		// 操作中の画像代入
 		m_texture = m_front_texture;
 	*/
-
+	
 	// プレイヤーの移動操作
 	if (key.On(VK_UP)) {
 
@@ -53,6 +59,8 @@ void Player::Update() {
 	else {
 		m_animation_num = 0;
 	}
+	m_rect_collider.x = m_pos.x;
+	m_rect_collider.y = m_pos.y;
 }
 
 void Player::Draw() {

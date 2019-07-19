@@ -12,6 +12,7 @@ void GameMain::Init() {
 
 	m_player.Init();
 	m_enemy.Init();
+	m_collision_manager = CollisionManager::GetInstance();
 
 	// 次シーン指定変数を現在のシーンで初期化
 	m_new_scene = m_scene;
@@ -29,6 +30,7 @@ void GameMain::Update() {
 	m_player.Update();
 	m_enemy.Update();
 	m_map.Create();
+	m_collision_manager->Update(&m_player,&m_enemy);
 
 	// デバック用
 	if (key.Press(VK_F1)) {

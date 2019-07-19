@@ -10,10 +10,17 @@ void Enemy::Init() {
 	m_animation_num = 0;
 	m_animation_speed = 10;
 	m_texture = res.GetTextureName(TextureList::ENEMY_FRONT_TEX);
+
+	m_rect_collider.x = m_pos.x;
+	m_rect_collider.y = m_pos.y;
+	m_rect_collider.heigth = 128;
+	m_rect_collider.wide = 64;
+	m_colliderType = Collision::ColliderType::RECT;
 }
 
 void Enemy::Update() {
-
+	m_rect_collider.x = m_pos.x;
+	m_rect_collider.y = m_pos.y;
 }
 
 void Enemy::Draw() {

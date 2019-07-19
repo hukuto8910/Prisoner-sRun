@@ -23,6 +23,11 @@ public:
 	// 描画
 	virtual void Draw() = 0;
 
+
+	D3DXVECTOR2 GetPos() {
+		return m_pos;
+	}
+
 protected:
 	D3DXVECTOR2 m_pos;		// 位置座標
 	std::string m_texture;	// 画像
