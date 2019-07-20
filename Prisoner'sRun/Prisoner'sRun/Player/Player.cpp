@@ -15,7 +15,6 @@ void Player::Init() {
 	m_rect_collider.y = m_pos.y;
 	m_rect_collider.heigth = 128;
 	m_rect_collider.wide = 64;
-	m_colliderType = Collision::ColliderType::RECT;
 }
 
 void Player::Update() {

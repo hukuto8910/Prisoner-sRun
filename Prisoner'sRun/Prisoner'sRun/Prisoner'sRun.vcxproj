@@ -204,6 +204,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Prisoner%27sRun\Prisoner%27sRun\Prisoner%27sRun\CollisionManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Enemy\Enemy.cpp">
       <SubType>
       </SubType>
