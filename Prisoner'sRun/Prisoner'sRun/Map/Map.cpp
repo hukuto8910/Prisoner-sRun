@@ -113,20 +113,20 @@ std::string Map::EntryMapTexture(const int id) {
 	case MapChipList::WALL_UNDER3:
 		return res.GetTextureName(TextureList::MAP_WALL_UNDER3_TEX);
 
-	case MapChipList::CEILING1:
-		return res.GetTextureName(TextureList::MAP_CEILING1_TEX);
-
-	case MapChipList::CEILING2:
-		return res.GetTextureName(TextureList::MAP_CEILING2_TEX);
-
-	case MapChipList::CEILING3:
-		return res.GetTextureName(TextureList::MAP_CEILING3_TEX);
-
-	case MapChipList::CEILING_CORNER1:
-		return res.GetTextureName(TextureList::MAP_CEILING_CORNER1_TEX);
-
-	case MapChipList::CEILING_CORNER2:
-		return res.GetTextureName(TextureList::MAP_CEILING_CORNER1_TEX);
+	//case MapChipList::CEILING1:
+	//	return res.GetTextureName(TextureList::MAP_CEILING1_TEX);
+	//
+	//case MapChipList::CEILING2:
+	//	return res.GetTextureName(TextureList::MAP_CEILING2_TEX);
+	//
+	//case MapChipList::CEILING3:
+	//	return res.GetTextureName(TextureList::MAP_CEILING3_TEX);
+	//
+	//case MapChipList::CEILING_CORNER1:
+	//	return res.GetTextureName(TextureList::MAP_CEILING_CORNER1_TEX);
+	//
+	//case MapChipList::CEILING_CORNER2:
+	//	return res.GetTextureName(TextureList::MAP_CEILING_CORNER1_TEX);
 	}
 
 	return nullptr;
