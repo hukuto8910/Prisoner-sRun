@@ -1,4 +1,4 @@
-﻿#include<d3dx9.h>
+﻿#include <crtdbg.h>
 #include"../Library/Device/Device.h"
 #include"../Library/Window/Window.h"
 #include"../Library/Input/Keyboard.h"
@@ -10,6 +10,7 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 	
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	HWND h_wnd = Window::MakeWindow(WINDOW_W, WINDOW_H);
 	Device::Init(h_wnd);
 	
@@ -26,6 +27,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 	
 	scene_manager.Init();
 	res.Load();
+	Texture tex;
 
 	while (Window::ProcessMessage()) {
 		
@@ -48,7 +50,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int) {
 		Device::DrawEnd();
 	}
 
+
 	res.Relese();
+	tex.Relese();
 	Device::Release();
 	return 0;
 }

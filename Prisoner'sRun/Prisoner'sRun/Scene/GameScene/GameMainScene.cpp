@@ -6,12 +6,14 @@ GameMain::GameMain() {
 	
 	m_scene = SceneId::GAME_MAIN;
 	m_scene_step = SceneStep::SCENE_INIT;
+	m_map = new Map;
 }
 
 void GameMain::Init() {
 
 	m_player.Init();
 	m_enemy.Init();
+	m_map->Init();
 	m_collision_manager = CollisionManager::GetInstance();
 	m_collision_manager->Entry(&m_player);
 	m_collision_manager->Entry(&m_enemy);
@@ -32,7 +34,6 @@ void GameMain::Update() {
 
 	m_player.Update();
 	m_enemy.Update();
-	m_map.Create();
 	m_collision_manager->Update();
 
 	// デバック用
@@ -46,5 +47,4 @@ void GameMain::Update() {
 void GameMain::Draw() {
 	m_player.Draw();
 	m_enemy.Draw();
-	m_map.Draw();
 }

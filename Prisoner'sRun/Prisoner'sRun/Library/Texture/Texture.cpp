@@ -2,9 +2,9 @@
 #include"Texture.h"
 
 
-
-	static std::unordered_map <std::string, Texture>tex_list;	// 画像保存リスト
-
+namespace {
+	std::unordered_map <std::string, Texture> tex_list;	// 画像保存リスト
+}
 	// 変換コンストラクタ
 	Texture::Texture(const char* fileName) :Texture() {
 
@@ -18,7 +18,8 @@
 		// まだ読み込まれていない場合
 		if (itr == tex_list.end()) {
 
-			name = fileName;
+			this->name = fileName;
+			
 
 			// ファイル情報を取得
 			D3DXIMAGE_INFO info;
@@ -40,7 +41,7 @@
 		else {
 
 			tex = itr->second.tex;
-
+			
 			if (tex) {
 				// 参照カウント インクリメント
 				tex->AddRef();
@@ -53,7 +54,7 @@
 	}
 
 	// コピーコンストラクタ
-	Texture::Texture(const Texture&t) :tex(t), size(t.size) {
+	Texture::Texture(const Texture& t) :tex(t), size(t.size), name(t.name) {
 
 		if (tex) {
 			tex->AddRef();

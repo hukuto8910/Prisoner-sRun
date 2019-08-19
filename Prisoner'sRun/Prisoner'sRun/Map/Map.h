@@ -7,123 +7,139 @@
 #include"../LoadResource/LoadResource.h"
 
 
-#define MAP_CHIP_SIZE 32
-#define MAP_SIZE_WIDTH 10
-#define MAP_SIZE_HEIGHT 3
+const int MAP_CHIP_SIZE = 32;
+const int MAP_SIZE_WIDTH = 60;
+const int MAP_SIZE_HEIGHT = 33;
 
-/*
-これいる？
-・Mapクラスで定義
-・構造体にするにしても、クラス内で
-・座標、画像、チップ番号、当たり判定の矩形が必要
-*/
-
-
-/*
-・Dataはcsvで読み取るようにする
-・縦はフル、横はUIを置くので、その分の幅で作成
-・アイテムはランダム、床などの構造は基本一定
-*/
-
+struct MapChip {
+	MapChip() :chip_num(0), tex_name(nullptr), pos(0, 0) {}
+	int chip_num;
+	std::string tex_name;
+	D3DXVECTOR2 pos;
+};
 
 class Map {
 public:
-	Map() {}
-	~Map() {};
+	Map();
+	~Map() {}
 
 	void Init();
-	void Update();
-	void Draw();
-	void Create();
 
 private:
-	// 画像指定用リスト
-	enum MapChipList {
-		MAP_TEXTURE_INIT,
-		//  床  //
-		FLOOR1,
-		FLOOR2,
-		FLOOR3,
-		//　上壁　//
-		WALL_TOP1,
-		WALL_TOP2,
-		WALL_TOP3,
-		//　下壁　//
-		WALL_UNDER1,
-		WALL_UNDER2,
-		WALL_UNDER3,
-		//　天井　//
-		CEILING1_TOP,
-		CEILING2_TOP,
-		CEILING3_TOP,
-		CEILING1_UNDER,
-		CEILING2_UNDER,
-		CEILING3_UNDER,
-		CEILING1_LEFT,
-		CEILING2_LEFT,
-		CEILING3_LEFT,
-		CEILING1_RIGTH,
-		CEILING2_RIGTH,
-		CEILING3_RIGTH,
-		//  天井角　//
-		CEILING_CORNER_TOP_LEFT,	// 左上の角
-		CEILING_CORNER_TOP_RIGHT,	// 上角の反転描画
-		CEILING_CORNER_UNDER_RIGHT, // 右下の角
-		CEILING_CORNER_UNDER_LEFT,	// 下角の反転描画
+	std::vector<std::vector<MapChip*>>m_map;
+	MapChip* map[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH];
+};
+	//// 画像指定用リスト
+	//enum MapChipList {
+	//	MAP_TEXTURE_INIT,
+	//	//  床  //
+	//	FLOOR1,
+	//	FLOOR2,
+	//	FLOOR3,
+	//	//　上壁　//
+	//	WALL_TOP1,
+	//	WALL_TOP2,
+	//	WALL_TOP3,
+	//	//　下壁　//
+	//	WALL_UNDER1,
+	//	WALL_UNDER2,
+	//	WALL_UNDER3,
+	//	//　天井　//
+	//	// 天井画像の180度回転
+	//	CEILING_TOP1,
+	//	CEILING_TOP2,
+	//	CEILING_TOP3,
+	//	// 天井画像の通常
+	//	CEILING_UNDER1,
+	//	CEILING_UNDER2,
+	//	CEILING_UNDER3,
+	//	// 天井画像の270度回転
+	//	CEILING_LEFT1,
+	//	CEILING_LEFT2,
+	//	CEILING_LEFT3,
+	//	// 天井画像の90度回転
+	//	CEILING_RIGTH1,
+	//	CEILING_RIGTH2,
+	//	CEILING_RIGTH3,
+	//	//  天井角　//
+	//	CEILING_CORNER_TOP_LEFT,	// 左上の角
+	//	CEILING_CORNER_TOP_RIGHT,	// 上角の反転描画
+	//	CEILING_CORNER_UNDER_RIGHT, // 右下の角
+	//	CEILING_CORNER_UNDER_LEFT,	// 下角の反転描画
 
-		MAP_TEXTURE_MAX
-	};
+	//	MAP_TEXTURE_MAX
+	//};
 
+/*
+// CSVファイル読み取り(C++)
+void LoadCsv(const std::string &file_name) {
 
-	// マップチップ情報
-	struct MapChip {
-		std::string tex;	// 画像
-		D3DXVECTOR2 pos;	// 描画座標
-		int id;				// マップチップ番号
-	};
-
-
-	// マップ画像登録関数
-	std::string EntryMapTexture(const int id);
-	//std::string EntryWallTexture(const int id);
-	//std::string EntryCeilingTexture(const int id);
-	
-	// CSVファイル読み取り関数
-	void LoadCsv(const std::string &file_name) {
-		const char *csv_file = file_name.c_str();
-		//	//FILE* file;
-		//	// ファイル読み取り
-			//fopen_s(&file, csv_file, "r");
-		std::ifstream file;
-		file.open(csv_file);
-		//if (file == nullptr) {
-		//	return;
-		//}
-		if (!file) {
-			return;
-		}
-
-		//int heigjt = 0, width = 0;
-		std::string str;
-		int p;
-		while (std::getline(file, str)) {
-			if ((p = str.find("\0")) != str.npos) {
-				continue;
-			}
-			std::vector<std::string> inner;
-			while ((p = str.find(",")) != str.npos) {
-				inner.push_back(str.substr(0, p));
-			}
-			inner.push_back(str);
-			map.push_back(inner);
-		}
-		file.close();
+	// ファイル登録
+	const char *csv_file = file_name.c_str();
+	std::ifstream file;
+	// 登録したcsvファイルの開ける
+	file.open(csv_file);
+	if (!file) {
+		return;
 	}
 
-private:
-	MapChip m_map_chip[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH];	// マップチップのリスト
-	int map_chipdate[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH];
-	std::vector<std::vector<std::string>> map;
-	
-	Resource& res = Resource::GetInstance();
-};
+	std::string line;
+	int p;
+
+	// 1行づつ読み込んでいく
+	while (std::getline(file, line)) {
+
+		std::vector<std::string> inner;
+		inner.reserve(60);
+
+		// コンマで区切られるまで文字を読み込む
+		while ((p = line.find(",")) != line.npos) {
+			inner.emplace_back(line.substr(0, p));
+			// 次の文字まで飛ばす
+			line = line.substr(p + 1);
+		}
+
+		// 最後の文字を追加
+		inner.emplace_back(line);
+		// 専用の変数に1行を代入
+		m_map.emplace_back(inner);
+
+
+		//unsigned int i = 0;
+		//unsigned int j = 0;
+		//for (auto list = inner.begin(); list != inner.end();) {
+		//	m_map_chip[i][j].id = std::atoi(list[j].c_str());
+		//	j++;
+		//}
+		//i++;
+	}
+
+	// ファイルを閉じる
+	file.close();
+}
+
+// ファイル読み込み(C言語)
+void InputCSV(const std::string &fileName, std::vector<std::vector<std::string>>& list) {
+	FILE* file = nullptr;
+	char buf[256];
+	int read_line = 0;
+
+	fopen_s(&file, fileName.c_str(), "r");
+	if (file == nullptr) {
+		return;
+	}
+
+	std::vector<std::string> temp;
+	char str[256];
+	while (fgets(buf, 256, file) != nullptr) {
+		if (++read_line <= 0) {
+			continue;
+		}
+		else if (read_line > MAP_SIZE_HEIGHT) {
+			break;
+		}
+		fscanf_s(file, "%[^,]", str);
+
+	}
+}
+*/
