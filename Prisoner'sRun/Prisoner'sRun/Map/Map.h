@@ -7,16 +7,13 @@
 #include"../LoadResource/LoadResource.h"
 
 
+// ピクセルサイズ
 const int MAP_CHIP_SIZE = 32;
+// マップの横サイズ
 const int MAP_SIZE_WIDTH = 60;
+// マップの縦サイズ
 const int MAP_SIZE_HEIGHT = 33;
 
-struct MapChip {
-	MapChip() :chip_num(0), tex_name(nullptr), pos(0, 0) {}
-	int chip_num;
-	std::string tex_name;
-	D3DXVECTOR2 pos;
-};
 
 class Map {
 public:
@@ -26,8 +23,28 @@ public:
 	void Init();
 
 private:
+	// マップチップの構造体
+	struct MapChip {
+		//MapChip() :chip_num(0), tex_name(nullptr), pos(0, 0) {}
+		int chip_num;			// チップ番号
+		std::string tex_name;	// テクスチャ―名
+		D3DXVECTOR2 pos;		// 描画位置
+	};
+
+	// CSV読み込み関数　
+	/*
+	第1：読み込みたいCSVファイル名
+	第2：書き込み用の文字列ファイル
+	*/
+	bool InputCSV(const std::string &file_name,
+		std::vector<std::vector<std::string>> &list);
+private:
+	// 仮リスト
 	std::vector<std::vector<MapChip*>>m_map;
-	MapChip* map[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH];
+	// CSV読み込み用リスト
+	std::vector<std::vector<std::string>>m_chip_list;
+	// マップチップリスト
+	MapChip map[MAP_SIZE_HEIGHT][MAP_SIZE_WIDTH];
 };
 	//// 画像指定用リスト
 	//enum MapChipList {
@@ -69,77 +86,3 @@ private:
 
 	//	MAP_TEXTURE_MAX
 	//};
-
-/*
-// CSVファイル読み取り(C++)
-void LoadCsv(const std::string &file_name) {
-
-	// ファイル登録
-	const char *csv_file = file_name.c_str();
-	std::ifstream file;
-	// 登録したcsvファイルの開ける
-	file.open(csv_file);
-	if (!file) {
-		return;
-	}
-
-	std::string line;
-	int p;
-
-	// 1行づつ読み込んでいく
-	while (std::getline(file, line)) {
-
-		std::vector<std::string> inner;
-		inner.reserve(60);
-
-		// コンマで区切られるまで文字を読み込む
-		while ((p = line.find(",")) != line.npos) {
-			inner.emplace_back(line.substr(0, p));
-			// 次の文字まで飛ばす
-			line = line.substr(p + 1);
-		}
-
-		// 最後の文字を追加
-		inner.emplace_back(line);
-		// 専用の変数に1行を代入
-		m_map.emplace_back(inner);
-
-
-		//unsigned int i = 0;
-		//unsigned int j = 0;
-		//for (auto list = inner.begin(); list != inner.end();) {
-		//	m_map_chip[i][j].id = std::atoi(list[j].c_str());
-		//	j++;
-		//}
-		//i++;
-	}
-
-	// ファイルを閉じる
-	file.close();
-}
-
-// ファイル読み込み(C言語)
-void InputCSV(const std::string &fileName, std::vector<std::vector<std::string>>& list) {
-	FILE* file = nullptr;
-	char buf[256];
-	int read_line = 0;
-
-	fopen_s(&file, fileName.c_str(), "r");
-	if (file == nullptr) {
-		return;
-	}
-
-	std::vector<std::string> temp;
-	char str[256];
-	while (fgets(buf, 256, file) != nullptr) {
-		if (++read_line <= 0) {
-			continue;
-		}
-		else if (read_line > MAP_SIZE_HEIGHT) {
-			break;
-		}
-		fscanf_s(file, "%[^,]", str);
-
-	}
-}
-*/
