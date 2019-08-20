@@ -10,7 +10,9 @@
 class GameMain :public SceneBase{
 public:
 	GameMain();
-	~GameMain()override {}
+	~GameMain()override {
+		delete m_map;
+	}
 
 	void Init()override;
 	void Update()override;

@@ -47,4 +47,5 @@ void GameMain::Update() {
 void GameMain::Draw() {
 	m_player.Draw();
 	m_enemy.Draw();
+	m_map->Draw();
 }

@@ -1,4 +1,4 @@
-﻿#include<sstream>
+﻿#include <fstream>
 #include"Map.h"
 
 
@@ -6,30 +6,51 @@ Map::Map() {
 
 	// 容量を予約
 	m_chip_list.reserve(30);
+} 
+
+void Map::Init() {
 
 	// CSV読み取り
 	if (InputCSV("Map/MapChipData/mapdata.csv", m_chip_list) == false) {
 		MessageBox(NULL, "CSV読み込み失敗", "", MB_OK);
 	}
-} 
-
-void Map::Init() {
 
 	// チープデータの設定
 	for (int i = 0; i < MAP_SIZE_HEIGHT; i++) {
 		for (int j = 0; j < MAP_SIZE_WIDTH; j++) {
 
-			// チップ番号の設定
-			map[i][j].chip_num = std::stoi(m_chip_list[i][j]);
+			// チップ番号をstringからintに変更して登録
+			m_map[i][j].chip_num = std::stoi(m_chip_list[i][j]);
 
+			// 位置を登録
+			//m_map[i][j].pos.x = j * (float)MAP_SIZE_WIDTH;
+			//m_map[i][j].pos.y = i * (float)MAP_SIZE_HEIGHT;
+			m_map[i][j].pos = { j * (float)MAP_CHIP_SIZE, i * (float)MAP_CHIP_SIZE };
+
+			// チップ番号に合わせた画像を登録
+			EntryMapTexture(m_map[i][j]);
 		}
 	}
 }
 
-bool Map::InputCSV(const std::string &file_name,
+void Map::Draw() {
+
+	for (int i = 0; i < MAP_SIZE_HEIGHT; i++) {
+		for (int j = 0; j < MAP_SIZE_WIDTH; j++) {
+
+			if (m_map[i][j].chip_num == MapChipList::MAP_TEXTURE_INIT) {
+				continue;
+			}
+
+			Draw2D::Box(m_map[i][j].tex_name.c_str(), m_map[i][j].pos,1.f);
+		}
+	}
+}
+
+bool Map::InputCSV(const std::string &fileName,
 	std::vector<std::vector<std::string>> &list) {
 
-	const char* csv_file = file_name.c_str();
+	const char* csv_file = fileName.c_str();
 	std::ifstream file;
 	// CSVファイルをオープン
 	file.open(csv_file);
@@ -70,7 +91,7 @@ bool Map::InputCSV(const std::string &file_name,
 
 	return true;
 }
-/*
+
 void Map::EntryMapTexture(MapChip& map) {
 
 	switch (map.chip_num) {
@@ -148,4 +169,4 @@ void Map::EntryMapTexture(MapChip& map) {
 	}
 
 	return;
-}*/
+}
