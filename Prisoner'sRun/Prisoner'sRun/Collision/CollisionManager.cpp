@@ -1,4 +1,4 @@
-﻿#include"Collision/CollisionManager.h"
+﻿#include"CollisionManager.h"
 
 
 void CollisionManager::Update() {

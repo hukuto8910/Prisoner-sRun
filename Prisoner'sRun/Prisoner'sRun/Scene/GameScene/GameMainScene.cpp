@@ -34,6 +34,7 @@ void GameMain::Update() {
 
 	m_player.Update();
 	m_enemy.Update();
+	m_map->Update(m_player);
 	m_collision_manager->Update();
 
 	// デバック用

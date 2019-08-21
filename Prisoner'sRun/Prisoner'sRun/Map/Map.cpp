@@ -23,8 +23,6 @@ void Map::Init() {
 			m_map[i][j].chip_num = std::stoi(m_chip_list[i][j]);
 
 			// 位置を登録
-			//m_map[i][j].pos.x = j * (float)MAP_SIZE_WIDTH;
-			//m_map[i][j].pos.y = i * (float)MAP_SIZE_HEIGHT;
 			m_map[i][j].pos = { j * (float)MAP_CHIP_SIZE, i * (float)MAP_CHIP_SIZE };
 
 			// チップ番号に合わせた画像を登録
@@ -41,8 +39,18 @@ void Map::Draw() {
 			if (m_map[i][j].chip_num == MapChipList::MAP_TEXTURE_INIT) {
 				continue;
 			}
+			Draw2D::Box(m_map[i][j].tex_name.c_str(), m_map[i][j].pos, 1.f);
 
-			Draw2D::Box(m_map[i][j].tex_name.c_str(), m_map[i][j].pos,1.f);
+			// プレイヤーの位置に合わせて描画する箇所を指定
+			/*if ((m_draw_range_pos.x - 200) < m_map[i][j].pos.x && 
+				m_map[i][j].pos.x < (m_draw_range_pos.x + 200) &&
+				(m_draw_range_pos.y - 200) < m_map[i][j].pos.y &&
+				m_map[i][j].pos.y < (m_draw_range_pos.y + 200)) {
+				Draw2D::Box(m_map[i][j].tex_name.c_str(), m_map[i][j].pos, 1.f);
+			}
+			else {
+				continue;
+			}*/
 		}
 	}
 }

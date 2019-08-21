@@ -2,8 +2,8 @@
 
 #include<string>
 #include<vector>
-#include"../Library/Draw/Draw.h"
-#include"../LoadResource/LoadResource.h"
+#include"../Collision/Collision.h"
+#include"../Object/ObjectBase.h"
 
 
 // ピクセルサイズ
@@ -14,13 +14,18 @@ const int MAP_SIZE_WIDTH = 60;
 const int MAP_SIZE_HEIGHT = 33;
 
 
-class Map {
+class Map :public ObjectBase {
 public:
 	Map();
-	~Map() {}
+	~Map()override {}
 
-	void Init();
-	void Draw();
+	void Init()override;
+	void Update()override {}
+	void Draw()override;
+
+	void Update(CollisionObject& obj) {
+		m_draw_range_pos = obj.GetPos();
+	}
 
 private:
 	// マップチップの構造体
@@ -45,6 +50,7 @@ private:
 	*/
 	void EntryMapTexture(MapChip& map);
 private:
+	D3DXVECTOR2 m_draw_range_pos;
 	// 仮リスト
 	//std::vector<std::vector<MapChip*>>m_map;
 	// CSV読み込み用リスト
