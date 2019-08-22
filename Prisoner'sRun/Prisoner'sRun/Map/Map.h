@@ -51,8 +51,6 @@ private:
 	void EntryMapTexture(MapChip& map);
 private:
 	D3DXVECTOR2 m_draw_range_pos;
-	// 仮リスト
-	//std::vector<std::vector<MapChip*>>m_map;
 	// CSV読み込み用リスト
 	std::vector<std::vector<std::string>> m_chip_list;
 	// マップチップリスト

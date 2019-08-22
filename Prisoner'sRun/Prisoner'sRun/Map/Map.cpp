@@ -41,11 +41,16 @@ void Map::Draw() {
 			}
 			Draw2D::Box(m_map[i][j].tex_name.c_str(), m_map[i][j].pos, 1.f);*/
 
+			/*
+			ここのif文をUpdata内で行って、フラグをtrueにする
+			ここではフラグをif文で判定して、trueなら描画
+			当たり判定はフラグがtrueなものだけを判定する
+			*/
 			// プレイヤーの位置に合わせて描画する箇所を指定
 			if ((m_draw_range_pos.x - 200) < m_map[i][j].pos.x && 
 				m_map[i][j].pos.x < (m_draw_range_pos.x + 200) &&
-				(m_draw_range_pos.y - 200) < m_map[i][j].pos.y &&
-				m_map[i][j].pos.y < (m_draw_range_pos.y + 200)) {
+				(m_draw_range_pos.y - 150) < m_map[i][j].pos.y &&
+				m_map[i][j].pos.y < (m_draw_range_pos.y + 250)) {
 				Draw2D::Box(m_map[i][j].tex_name.c_str(), m_map[i][j].pos, 1.f);
 			}
 			else {
